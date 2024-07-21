@@ -1,3 +1,12 @@
+from dataclasses import dataclass
+
+from src.models.user.entyty import User
+
+
+
+
+
+
 
 @dataclass
 class AdministratorService(User):

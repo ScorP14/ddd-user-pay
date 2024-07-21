@@ -33,6 +33,12 @@ class BaseUserRepository(ABC):
     def update(self, id_user: int, **kwargs) -> User:
         ...
 
+    def __str__(self):
+        return self.__repr__()
+
+    def __repr__(self):
+        return self.__class__.__name__
+
 
 class UserRepositoryMemory(BaseUserRepository):
     def __init__(self):
@@ -46,6 +52,15 @@ class UserRepositoryMemory(BaseUserRepository):
             if user.id == id_user:
                 return user
         raise UserRepositoryNotFoundError(id_user)
+
+    def get_or_none(self, id_user: int) -> User | None:
+        try:
+            return self.get(id_user)
+        except UserRepositoryNotFoundError:
+            return None
+
+
+
 
     def add(self, user: User) -> None:
         self.temp.append(user)
