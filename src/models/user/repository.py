@@ -2,6 +2,7 @@ from abc import ABC, abstractmethod
 from typing import Sequence
 
 from src.models.user.entyty import User
+from src.models.user.exeption.repository import UserRepositoryNotFoundError
 
 
 class BaseUserRepository(ABC):
@@ -17,7 +18,7 @@ class BaseUserRepository(ABC):
     def get_or_none(self, id_user: int) -> User | None:
         try:
             self.get(id_user)
-        except Exception as e:
+        except UserRepositoryNotFoundError as e:
             return None
 
     @abstractmethod
@@ -44,7 +45,7 @@ class UserRepositoryMemory(BaseUserRepository):
         for user in self.temp:
             if user.id == id_user:
                 return user
-        raise KeyError()
+        raise UserRepositoryNotFoundError(id_user)
 
     def add(self, user: User) -> None:
         self.temp.append(user)

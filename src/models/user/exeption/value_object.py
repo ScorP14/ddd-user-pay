@@ -16,7 +16,7 @@ class UserValueObjectNameError(UserValueObjectError, ABC):
 
 @dataclass(frozen=True, repr=False)
 class UserNameShortLenError(UserValueObjectNameError):
-    value = str
+    value: str
 
     @property
     def message(self) -> str:
@@ -25,7 +25,7 @@ class UserNameShortLenError(UserValueObjectNameError):
 
 @dataclass(frozen=True, repr=False)
 class UserNameLengthLenError(UserValueObjectNameError):
-    value = str
+    value: str
 
     @property
     def message(self) -> str:
@@ -39,7 +39,7 @@ class UserValueObjectPasswordError(UserValueObjectError, ABC):
 
 @dataclass(frozen=True, repr=False)
 class UserPasswordShortLenError(UserValueObjectPasswordError):
-    value = str
+    value: str
 
     @property
     def message(self) -> str:
