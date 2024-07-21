@@ -46,14 +46,14 @@ class BaseUserRepository(ABC):
 
 class UserRepositoryMemory(BaseUserRepository):
     def __init__(self):
-        self.temp = []
+        self.temp: list[User] = list()
 
     def all(self) -> list[User]:
         return self.temp
 
     def get(self, id_user: int) -> User:
         for user in self.temp:
-            if user.id == id_user:
+            if user.id.value == id_user:
                 return user
         raise UserRepositoryNotFoundError(id_user)
 

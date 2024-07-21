@@ -1,10 +1,29 @@
 from dataclasses import dataclass
 from abc import ABC, abstractmethod
 
+from src.models.user.entyty import User
+from src.models.user.repository import BaseUserRepository
+
 
 @dataclass(frozen=True)
-class BaseBusinessRule:
+class BaseBusinessRule(ABC):
 
     @abstractmethod
     def rule_checking(self):
         ...
+
+
+@dataclass(frozen=True)
+class UserRuleCreate(ABC):
+    user: User
+    repository: BaseUserRepository
+
+
+@dataclass(frozen=True)
+class UserRuleIsExistInRepository(UserRuleCreate):
+    user: User
+    repository: BaseUserRepository
+
+    def rule_checking(self):
+        if self.repository.is_exist_by_id(self.user.id.value):
+            raise Exception('ЕСТЬ ТАКОЙ ПОЛЬЗОВАТЕЛЬ!!!!')
