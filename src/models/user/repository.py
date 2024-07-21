@@ -1,7 +1,7 @@
 from abc import ABC, abstractmethod
 from typing import Sequence
 
-from .entyty import User
+from src.models.user.entyty import User
 
 
 class BaseUserRepository(ABC):
