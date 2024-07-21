@@ -33,6 +33,10 @@ class BaseUserRepository(ABC):
     def update(self, id_user: int, **kwargs) -> User:
         ...
 
+    @abstractmethod
+    def is_exist_by_id(self, id_user: int) -> bool:
+        ...
+
     def __str__(self):
         return self.__repr__()
 
@@ -59,8 +63,10 @@ class UserRepositoryMemory(BaseUserRepository):
         except UserRepositoryNotFoundError:
             return None
 
-
-
+    def is_exist_by_id(self, id_user: int) -> bool:
+        if self.get_or_none(id_user):
+            return True
+        return False
 
     def add(self, user: User) -> None:
         self.temp.append(user)
