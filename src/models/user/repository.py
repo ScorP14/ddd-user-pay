@@ -1,7 +1,7 @@
 from abc import ABC, abstractmethod
 from typing import Sequence
 
-from src.models.user.entyty import User
+from src.models.user.entity import User
 from src.models.user.exeption.repository import UserRepositoryNotFoundError
 
 

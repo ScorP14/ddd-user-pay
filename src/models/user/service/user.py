@@ -2,7 +2,7 @@ from dataclasses import dataclass, field
 from typing import Type, Sequence
 
 from src.models.common.value_object import ItemID
-from src.models.user.entyty import User
+from src.models.user.entity import User
 from src.models.user.repository import BaseUserRepository
 from src.models.user.rule import UserRuleCreate
 from src.models.user.value_object import UserName, UserEmail, UserPassword
@@ -57,7 +57,7 @@ class GetOrNoneUser:
         self.repository.get_or_none(self.id_item)
 
 
-from src.models.user.entyty import User
+from src.models.user.entity import User
 from src.models.user.repository import UserRepositoryMemory
 
 repo = UserRepositoryMemory()

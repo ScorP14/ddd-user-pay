@@ -1,7 +1,7 @@
 from dataclasses import dataclass
 from abc import ABC, abstractmethod
 
-from src.models.user.entyty import User
+from src.models.user.entity import User
 from src.models.user.repository import BaseUserRepository
 
 
