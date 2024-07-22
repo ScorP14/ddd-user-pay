@@ -9,12 +9,12 @@ from src.models.user.repository import BaseUserRepository
 class BaseBusinessRule(ABC):
 
     @abstractmethod
-    def rule_checking(self):
+    def checking(self):
         ...
 
 
 @dataclass(frozen=True)
-class UserRuleCreate(ABC):
+class UserRuleCreate(BaseBusinessRule, ABC):
     user: User
     repository: BaseUserRepository
 
@@ -24,6 +24,6 @@ class UserRuleIsExistInRepository(UserRuleCreate):
     user: User
     repository: BaseUserRepository
 
-    def rule_checking(self):
+    def checking(self):
         if self.repository.is_exist_by_id(self.user.id.value):
             raise Exception('ЕСТЬ ТАКОЙ ПОЛЬЗОВАТЕЛЬ!!!!')
