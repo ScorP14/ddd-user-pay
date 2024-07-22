@@ -28,7 +28,7 @@ class BaseUserRepository(ABC):
 
     def get_or_none(self, id_user: int) -> User | None:
         try:
-            self.get(id_user)
+            return self.get(id_user)
         except UserRepositoryNotFoundError as e:
             return None
 

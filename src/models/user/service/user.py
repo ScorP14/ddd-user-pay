@@ -6,6 +6,7 @@ from src.models.user.entity import User
 from src.models.user.repository import BaseUserRepository
 from src.models.user.rule import UserRuleCreate
 from src.models.user.value_object import UserName, UserEmail, UserPassword
+from src.models.user.repository import UserRepositoryMemory
 
 
 @dataclass
@@ -56,9 +57,6 @@ class GetOrNoneUser:
     def execute(self):
         self.repository.get_or_none(self.id_item)
 
-
-from src.models.user.entity import User
-from src.models.user.repository import UserRepositoryMemory
 
 repo = UserRepositoryMemory()
 

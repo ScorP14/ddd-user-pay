@@ -20,8 +20,6 @@ class UserRuleCreate(BaseBusinessRule, ABC):
 
 @dataclass(frozen=True)
 class UserRuleIsExistInRepository(UserRuleCreate):
-    user: User
-    repository: BaseUserRepository
 
     def checking(self):
         if self.repository.is_exist_by_id(self.user.id.value):
