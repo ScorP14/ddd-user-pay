@@ -12,12 +12,6 @@ class BaseUserRepository(ABC):
     @abstractmethod
     def get(self, id_user: int) -> User: ...
 
-    def get_or_none(self, id_user: int) -> User | None:
-        try:
-            self.get(id_user)
-        except UserRepositoryNotFoundError as e:
-            return None
-
     @abstractmethod
     def add(self, user: User) -> None: ...
 
@@ -31,6 +25,12 @@ class BaseUserRepository(ABC):
         if self.get_or_none(id_user):
             return True
         return False
+
+    def get_or_none(self, id_user: int) -> User | None:
+        try:
+            self.get(id_user)
+        except UserRepositoryNotFoundError as e:
+            return None
 
     def __str__(self):
         return self.__repr__()
