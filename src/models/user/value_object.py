@@ -3,8 +3,14 @@ from dataclasses import dataclass
 from email_validator import validate_email, EmailNotValidError
 
 from src.models.common.value_object import ValueObject
-from src.models.user.exeption.value_object import UserNameShortLenError, UserNameLengthLenError
-from src.models.user.exeption.value_object import UserPasswordLengthLenError, UserPasswordShortLenError
+from src.models.user.exeption.value_object import (
+    UserNameShortLenError,
+    UserNameLengthLenError,
+)
+from src.models.user.exeption.value_object import (
+    UserPasswordLengthLenError,
+    UserPasswordShortLenError,
+)
 from src.models.user.exeption.value_object import UserMailNotValidError
 
 
@@ -47,8 +53,7 @@ class UserEmail(ValueObject):
                 test_environment=False,
                 globally_deliverable=False,
                 timeout=False,
-                dns_resolver=False
+                dns_resolver=False,
             )
         except EmailNotValidError as e:
             raise UserMailNotValidError(self.value)
-

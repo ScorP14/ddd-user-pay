@@ -7,12 +7,10 @@ from src.models.user.exeption.repository import UserRepositoryNotFoundError
 
 class BaseUserRepository(ABC):
     @abstractmethod
-    def all(self) -> Sequence[User]:
-        ...
+    def all(self) -> Sequence[User]: ...
 
     @abstractmethod
-    def get(self, id_user: int) -> User:
-        ...
+    def get(self, id_user: int) -> User: ...
 
     @abstractmethod
     def get_or_none(self, id_user: int) -> User | None:
@@ -22,20 +20,16 @@ class BaseUserRepository(ABC):
             return None
 
     @abstractmethod
-    def add(self, user: User) -> None:
-        ...
+    def add(self, user: User) -> None: ...
 
     @abstractmethod
-    def delete(self, id_user: int) -> None:
-        ...
+    def delete(self, id_user: int) -> None: ...
 
     @abstractmethod
-    def update(self, id_user: int, **kwargs) -> User:
-        ...
+    def update(self, id_user: int, **kwargs) -> User: ...
 
     @abstractmethod
-    def is_exist_by_id(self, id_user: int) -> bool:
-        ...
+    def is_exist_by_id(self, id_user: int) -> bool: ...
 
     def __str__(self):
         return self.__repr__()

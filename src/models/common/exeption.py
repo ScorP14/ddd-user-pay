@@ -9,7 +9,4 @@ class BaseError(Exception, ABC):
 
     @property
     @abstractmethod
-    def message(self) -> str:
-        ...
-
-
+    def message(self) -> str: ...

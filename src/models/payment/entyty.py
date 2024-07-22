@@ -4,7 +4,6 @@ from src.models.common.value_object import ItemID
 from src.models.user.entyty import User
 
 
-
 @dataclass
 class Payment:
     id: ItemID
@@ -17,5 +16,3 @@ class Account:
     id: ItemID
     user: User
     balance: float
-
-

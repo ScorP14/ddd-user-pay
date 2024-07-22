@@ -5,8 +5,7 @@ from src.models.user.exeption.base import BaseUserError
 
 
 @dataclass(frozen=True, repr=False)
-class UserRepositoryError(BaseUserError, ABC):
-    ...
+class UserRepositoryError(BaseUserError, ABC): ...
 
 
 @dataclass(frozen=True, repr=False)
@@ -15,4 +14,4 @@ class UserRepositoryNotFoundError(UserRepositoryError):
 
     @property
     def message(self) -> str:
-        return f'Пользователь с id({self.value}) не найден'
+        return f"Пользователь с id({self.value}) не найден"

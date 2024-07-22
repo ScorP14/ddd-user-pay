@@ -17,7 +17,7 @@ class PostgreSQL(Base):
 
 class Constants(Base):
     # postgresql: PostgreSQL()
-    sale_for_password: str = Field(default='oiaSASD921nSADuiasbd8921hSADon')
+    sale_for_password: str = Field(default="oiaSASD921nSADuiasbd8921hSADon")
 
 
 @lru_cache(1)

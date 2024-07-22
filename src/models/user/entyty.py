@@ -14,5 +14,4 @@ class User:
 
 
 @dataclass
-class Administrator(User):
-    ...
+class Administrator(User): ...

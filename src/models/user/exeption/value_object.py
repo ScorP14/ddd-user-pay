@@ -5,13 +5,11 @@ from src.models.common.exeption import BaseError
 
 
 @dataclass(frozen=True, repr=False)
-class UserValueObjectError(BaseError, ABC):
-    ...
+class UserValueObjectError(BaseError, ABC): ...
 
 
 @dataclass(frozen=True, repr=False)
-class UserValueObjectNameError(UserValueObjectError, ABC):
-    ...
+class UserValueObjectNameError(UserValueObjectError, ABC): ...
 
 
 @dataclass(frozen=True, repr=False)
@@ -20,7 +18,7 @@ class UserNameShortLenError(UserValueObjectNameError):
 
     @property
     def message(self) -> str:
-        return f'Слишком короткое имя {len(self.value)}. Нужно больше 2 символов'
+        return f"Слишком короткое имя {len(self.value)}. Нужно больше 2 символов"
 
 
 @dataclass(frozen=True, repr=False)
@@ -29,12 +27,11 @@ class UserNameLengthLenError(UserValueObjectNameError):
 
     @property
     def message(self) -> str:
-        return f'Слишком длинное имя {len(self.value)}. Нужно меньше 200 символов'
+        return f"Слишком длинное имя {len(self.value)}. Нужно меньше 200 символов"
 
 
 @dataclass(frozen=True, repr=False)
-class UserValueObjectPasswordError(UserValueObjectError, ABC):
-    ...
+class UserValueObjectPasswordError(UserValueObjectError, ABC): ...
 
 
 @dataclass(frozen=True, repr=False)
@@ -43,7 +40,7 @@ class UserPasswordShortLenError(UserValueObjectPasswordError):
 
     @property
     def message(self) -> str:
-        return f'Слишком короткий пароль {len(self.value)}. Нужно больше 8 символов'
+        return f"Слишком короткий пароль {len(self.value)}. Нужно больше 8 символов"
 
 
 @dataclass(frozen=True, repr=False)
@@ -52,12 +49,11 @@ class UserPasswordLengthLenError(UserValueObjectPasswordError):
 
     @property
     def message(self) -> str:
-        return f'Слишком длинный пароль {len(self.value)}. Нужно меньше 30 символов'
+        return f"Слишком длинный пароль {len(self.value)}. Нужно меньше 30 символов"
 
 
 @dataclass(frozen=True, repr=False)
-class UserValueObjectEmailError(UserValueObjectError, ABC):
-    ...
+class UserValueObjectEmailError(UserValueObjectError, ABC): ...
 
 
 @dataclass(frozen=True, repr=False)
@@ -66,4 +62,4 @@ class UserMailNotValidError(UserValueObjectPasswordError):
 
     @property
     def message(self) -> str:
-        return f'Неверный адрес электронной почты - {self.value}'
+        return f"Неверный адрес электронной почты - {self.value}"
