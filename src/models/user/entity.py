@@ -7,9 +7,9 @@ from src.models.user.value_object import UserName, UserPassword, UserEmail
 @dataclass
 class User:
     id: ItemID
+    email: UserEmail
     first_name: UserName = field(repr=False)
     last_name: UserName = field(repr=False)
-    email: UserEmail = field(repr=False)
     password: UserPassword = field(repr=False)
 
 

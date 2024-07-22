@@ -12,7 +12,6 @@ class BaseUserRepository(ABC):
     @abstractmethod
     def get(self, id_user: int) -> User: ...
 
-    @abstractmethod
     def get_or_none(self, id_user: int) -> User | None:
         try:
             self.get(id_user)
@@ -28,8 +27,10 @@ class BaseUserRepository(ABC):
     @abstractmethod
     def update(self, id_user: int, **kwargs) -> User: ...
 
-    @abstractmethod
-    def is_exist_by_id(self, id_user: int) -> bool: ...
+    def is_exist_by_id(self, id_user: int) -> bool:
+        if self.get_or_none(id_user):
+            return True
+        return False
 
     def __str__(self):
         return self.__repr__()
@@ -50,17 +51,6 @@ class UserRepositoryMemory(BaseUserRepository):
             if user.id.value == id_user:
                 return user
         raise UserRepositoryNotFoundError(id_user)
-
-    def get_or_none(self, id_user: int) -> User | None:
-        try:
-            return self.get(id_user)
-        except UserRepositoryNotFoundError:
-            return None
-
-    def is_exist_by_id(self, id_user: int) -> bool:
-        if self.get_or_none(id_user):
-            return True
-        return False
 
     def add(self, user: User) -> None:
         self.temp.append(user)
