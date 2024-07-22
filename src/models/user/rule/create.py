@@ -1,19 +1,14 @@
 from dataclasses import dataclass
-from abc import ABC, abstractmethod
+from abc import ABC
 
 from src.models.user.entity import User
 from src.models.user.repository import BaseUserRepository
-
-
-@dataclass(frozen=True)
-class BaseBusinessRule(ABC):
-
-    @abstractmethod
-    def checking(self): ...
+from src.models.user.rule.base import BaseBusinessRule
 
 
 @dataclass(frozen=True)
 class UserRuleCreate(BaseBusinessRule, ABC):
+    """Базовый класс для всех бизнес правил по созданию пользователя"""
     user: User
     repository: BaseUserRepository
 
