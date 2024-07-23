@@ -56,32 +56,3 @@ class GetOrNoneUser:
 
     def execute(self):
         self.repository.get_or_none(self.id_item)
-
-
-repo = UserRepositoryMemory()
-
-for i in range(5):
-    user1 = User(
-        id=ItemID(i),
-        first_name=UserName("Fsd"),
-        last_name=UserName("Last"),
-        email=UserEmail("Mail@wqe"),
-        password=UserPassword("SECRET12"),
-    )
-    insta = CreateUser(instance_user=user1, repository=repo, rule=[])
-    insta.execute()
-
-print(repo.is_exist_by_id(3))
-
-user12 = User(
-    id=ItemID(3),
-    first_name=UserName("Fsd"),
-    last_name=UserName("Last"),
-    email=UserEmail("Mail@wqe"),
-    password=UserPassword("SECRET12"),
-)
-insta = CreateUser(instance_user=user12, repository=repo, rule=[])
-insta.execute()
-
-for i in repo.all():
-    print(i)

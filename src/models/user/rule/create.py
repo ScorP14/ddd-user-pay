@@ -9,6 +9,7 @@ from src.models.user.rule.base import BaseBusinessRule
 @dataclass(frozen=True)
 class UserRuleCreate(BaseBusinessRule, ABC):
     """Базовый класс для всех бизнес правил по созданию пользователя"""
+
     user: User
     repository: BaseUserRepository
 
